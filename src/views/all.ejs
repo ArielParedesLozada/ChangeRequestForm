@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los formularios</title>
+</head>
+
+<body>
+    <% all.forEach(form=> { %>
+        <li><a href="/forms/<%= form.ID_SOL %>">
+                <%= form.NOM_SOL %>
+            </a></li>
+        <% }) %>
+
+            <h1>Crear uno nuevo</h1>
+            <form id="new-form">
+                <input type="text" name="form-name" id="form-name" placeholder="Nombre del formulario">
+                <button type="submit">Enviar</button>
+            </form>
+            <script>
+                document.getElementById('new-form').addEventListener('submit', async (e) => {
+                    e.preventDefault()
+                    const id = 0
+                    const NOM_SOL = document.getElementById('form-name').value
+                    const EST_SOL = null
+                    const db = JSON.stringify({ id, NOM_SOL, EST_SOL })
+                    console.log(db)
+                    try {
+                        const response = await fetch('/form', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ id, NOM_SOL, EST_SOL })
+                        })
+                        const result = await response.json()
+                        console.log(result)
+                        window.alert('EXITO')
+                        location.reload()
+                    } catch (error) {
+                        console.error('Error al enviar la solicitud:', error);
+                        window.alert('Error al enviar los datos');
+                    }
+                })
+            </script>
+</body>
+
+</html>
