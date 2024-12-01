@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <% if (all && all.length> 0) { %>
+    <% if (data && data.length> 0) { %>
         <div class="all-forms">
-            <% all.forEach(form=> { %>
-                <li><a href="/forms/<%= form.ID_SOL %>">
-                        <%= form.NOM_SOL %>
+            <% data.forEach(form=> { %>
+                <li><a href="/forms/<%= form[0] %>">
+                        <%= form[1] %>
                     </a></li>
                 <% }) %>
         </div>

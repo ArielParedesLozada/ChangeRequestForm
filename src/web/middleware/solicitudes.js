@@ -6,7 +6,7 @@ const selectAll = async function selectAll(req, res, next) {
     const rawData = await solicitudCon.selectAll();
     const data = rawData.map((row) => Object.values(row));
     //responses.success(req, res, data)
-    res.render("all", { all: data });
+    res.render("all", { data });
   } catch (error) {
     next(error);
   }
