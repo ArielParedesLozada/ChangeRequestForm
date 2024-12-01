@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <% all.forEach(form=> { %>
-        <li><a href="/forms/<%= form.ID_SOL %>">
-                <%= form.NOM_SOL %>
+    <% data.forEach(form => { %>
+        <li><a href="/forms/<%= form[0] %>">
+                <%= form[1] %>.
             </a></li>
         <% }) %>
 
@@ -22,22 +22,21 @@
             <script>
                 document.getElementById('new-form').addEventListener('submit', async (e) => {
                     e.preventDefault()
-                    const id = 0
-                    const NOM_SOL = document.getElementById('form-name').value
-                    const EST_SOL = null
-                    const db = JSON.stringify({ id, NOM_SOL, EST_SOL })
-                    console.log(db)
+                    const data = [
+                        0,
+                        document.getElementById('form-name').value,
+                        null
+                    ]
                     try {
                         const response = await fetch('/form', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ id, NOM_SOL, EST_SOL })
+                            body: JSON.stringify(data)
                         })
                         const result = await response.json()
-                        console.log(result)
-                        window.alert('EXITO')
+                        window.alert(result.error ? 'ERROR' : 'EXITO')
                         location.reload()
                     } catch (error) {
                         console.error('Error al enviar la solicitud:', error);

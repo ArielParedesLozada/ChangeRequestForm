@@ -4,8 +4,10 @@ const solicitudCon = require('../../controllers/SolicitudControllers')
 
 const selectAll = async function selectAll(req, res, next) {
     try {
-        const all = await solicitudCon.selectAll()
-        res.render('all', { all })
+        const rawData = await solicitudCon.selectAll()
+        const data = rawData.map(row => Object.values(row))
+        //responses.success(req, res, data)
+        res.render('all', { data })
     } catch (error) {
         next(error)
     }
@@ -13,8 +15,9 @@ const selectAll = async function selectAll(req, res, next) {
 
 const select = async function select(req, res, next) {
     try {
-        const data = await solicitudCon.select(req.params.id)
-        //console.log(data)
+        const rawData = await solicitudCon.select(req.params.id)
+        let data = rawData.map(row => Object.values(row))
+        data = data[0]
         //responses.success(req, res, data)
         res.render('form', { data })
     } catch (error) {
