@@ -17,34 +17,44 @@
 
         <h3>
             ESTADO:
-            <% if ( data[2] == null) { %>
+            <% if ( data[5] == null) { %>
                 Por aprobar
                 <% } else { %>
                     Aprobado
                     <% } %>
         </h3>
-
+        <input type="hidden" name="form-id" id="form-id" value="<%= data[0] %>">
+        <input type="hidden" name="form-title" id="form-title" value="<%= data[1] %>">
+        <input type="hidden" name="form-version" id="form-version" value="<%= data[2] %>">
+        <input type="hidden" name="form-date-sol" id="form-date-sol" value="<%= data[3] %>">
+        <input type="hidden" name="form-priority" id="form-priority" value="<%= data[4] %>">
+        <input type="hidden" name="form-status" id="form-status" value="<%= data[5] %>">
+        <input type="hidden" name="form-description" id="form-description" value="<%= data[6] %>">
+        <input type="hidden" name="form-reason" id="form-reason" value="<%= data[7] %>">
+        <input type="hidden" name="form-solicitante" id="form-solicitante" value="<%= data[8] %>">
+        <input type="hidden" name="form-project" id="form-project" value="<%= data[9] %>">
         <form id="form-accept">
-            <input type="hidden" name="form-id" id="form-id" value="<%= data[0] %>">
-            <input type="hidden" name="form-name" id="form-name" value="<%= data[1] %>">
             <fieldset>
                 <legend>Autorización</legend>
 
                 <div>
                     <label for="form-date">Fecha:</label>
-                    <input type="date" id="form-date" name="form-date">
+                    <input type="date" id="form-date" name="form-date"
+                        value="<%= data[10] == null ? '' : new Date(data[10]).toISOString().split('T')[0] %>"
+                        <%=data[10]==null ? '' : 'disabled' %>>
                 </div>
 
                 <div>
                     <label for="form-reviewer">Revisor:</label>
-                    <input type="text" id="form-reviewer" name="form-reviewer"
-                        placeholder="Participante revisor">
+                    <input type="text" id="form-reviewer" name="form-reviewer" placeholder="Participante revisor"
+                        value="<%= data[11] || '' %>" <%=data[11]==null ? '' : 'disabled' %> >
                 </div>
 
                 <div>
                     <label for="form-enviroment">Entorno:</label>
                     <input type="text" id="form-enviroment" name="form-enviroment"
-                        placeholder="Pruebas, desarrollo, ...">
+                        placeholder="Pruebas, desarrollo, ..." value="<%= data[12] || '' %>"
+                        <%=data[12] == null ? '' : 'disabled' %>>
                 </div>
             </fieldset>
 
@@ -53,14 +63,15 @@
 
                 <div>
                     <label for="form-modules">Modificados</label>
-                    <input type="text" id="form-modules" name="form-modules"
-                        placeholder="Modulos modificaods...">
+                    <input type="text" id="form-modules" name="form-modules" placeholder="Modulos modificaods..."
+                        value="<%= data[13] || '' %>" <%=data[13]==null ? '' : 'disabled' %>>
                 </div>
 
                 <div>
                     <label for="form-affected">Afectados</label>
                     <input type="text" id="form-affected" name="form-affected"
-                        placeholder="Modulos directamente afectados/acoplados">
+                        placeholder="Modulos directamente afectados/acoplados"
+                        value="<%= data || '' %>" <%=data[14] == null ? '' : 'disabled' %>>
                 </div>
 
             </fieldset>
