@@ -5,20 +5,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todos los formularios</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
-    <% data.forEach(form => { %>
-        <li><a href="/forms/<%= form[0] %>">
-                <%= form[1] %>.
-            </a></li>
-        <% }) %>
+    <% if (all && all.length> 0) { %>
+        <div class="all-forms">
+            <% all.forEach(form=> { %>
+                <li><a href="/forms/<%= form.ID_SOL %>">
+                        <%= form.NOM_SOL %>
+                    </a></li>
+                <% }) %>
+        </div>
+        <% } %>
 
-            <h1>Crear uno nuevo</h1>
-            <form id="new-form">
-                <input type="text" name="form-name" id="form-name" placeholder="Nombre del formulario">
-                <button type="submit">Enviar</button>
-            </form>
+            <div>
+                <div class="container">
+                    <h1>Formulario de Petición de Cambios</h1>
+                    <form id="new-form">
+                        <!-- Información del solicitante -->
+                        <fieldset class="applicant">
+                            <legend>Información del Solicitante</legend>
+
+                            <div>
+                                <label for="form-name">Nombre completo:</label>
+                                <input type="text" id="form-name" name="form-name" placeholder="Tu nombre completo"
+                                    required>
+                            </div>
+
+                        </fieldset>
+
+                        <!-- Detalles del cambio -->
+                        <fieldset class="details">
+                            <legend>Solicitud</legend>
+
+                            <div>
+                                <label for="form-name">Titulo de la solicitud</label>
+                                <input type="text" id="form-name" name="form-name" placeholder="Breve descripción">
+                            </div>
+
+                            <div class="grid-code">
+                                <label for="form-sol">Código de la solicitud</label>
+                                <input type="text" id="form-sol" name="form-sol" placeholder="Codigo de la solicitud">
+                            </div>
+
+                            <div class="grid-version">
+                                <label for="form-version">Version:</label>
+                                <input type="text" id="form-version" name="form-version" placeholder="Breve descripción"
+                                    required>
+                            </div>
+
+                            <div>
+                                <label for="form-date-sol">Fecha:</label>
+                                <input type="date" id="form-date-sol" name="form-date-sol">
+                            </div>
+
+                            <div>
+                                <label for="form-description">Descripción detallada:</label>
+                                <textarea id="form-description" name="form-description"
+                                    placeholder="Describe el cambio en detalle..." required></textarea>
+                            </div>
+
+                            <div>
+                                <label for="form-reason">Razón o justificación:</label>
+                                <textarea id="form-reason" name="form-reason"
+                                    placeholder="¿Por qué es necesario este cambio?" required></textarea>
+                            </div>
+
+                            <div class="grid-priority">
+                                <label for="form-priority">Nivel de prioridad:</label>
+                                <select id="form-priority" name="form-priority" required>
+                                    <option value="" disabled selected>Selecciona...</option>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Autorización</legend>
+
+                            <div>
+                                <label for="form-date">Fecha:</label>
+                                <input type="date" id="form-date" name="form-date">
+                            </div>
+
+                            <div>
+                                <label for="form-reviewer">Revisor:</label>
+                                <input type="text" id="form-reviewer" name="form-reviewer"
+                                    placeholder="Participante revisor">
+                            </div>
+
+                            <div>
+                                <label for="form-enviroment">Entorno:</label>
+                                <input type="text" id="form-enviroment" name="form-enviroment"
+                                    placeholder="Pruebas, desarrollo, ...">
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Módulos</legend>
+
+                            <div>
+                                <label for="form-modules">Modificados</label>
+                                <input type="text" id="form-modules" name="form-modules"
+                                    placeholder="Modulos modificaods...">
+                            </div>
+
+                            <div>
+                                <label for="form-affected">Afectados</label>
+                                <input type="text" id="form-affected" name="form-affected"
+                                    placeholder="Modulos directamente afectados/acoplados">
+                            </div>
+
+                        </fieldset>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+
             <script>
                 document.getElementById('new-form').addEventListener('submit', async (e) => {
                     e.preventDefault()
