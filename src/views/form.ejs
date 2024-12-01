@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body>
     <h1>
         <!-- #region 
@@ -19,44 +22,51 @@
         -->
         <%= data[0][Object.keys(data[0])[1]] %>
     </h1>
-    <h3>
-        ESTADO:
-        <% if ( data[0][Object.keys(data[0])[2]]== null) { %>
-        Por aprobar
-        <% } else { %>
-        Aprobado
-        <% } %>
-    </h3>
-    <form id="form-accept">
-        <input type="hidden" name="form-id" id="form-id" value="<%= data[0][Object.keys(data[0])[0]] %>">
-        <input type="hidden" name="form-name" id="form-name" value="<%= data[0][Object.keys(data[0])[1]] %>">
-        <button type="submit">Aceptar</button>
-    </form>
+
+    <div class="container">
+
+        <h3>
+            ESTADO:
+            <% if ( data[0][Object.keys(data[0])[2]]==null) { %>
+                Por aprobar
+                <% } else { %>
+                    Aprobado
+                    <% } %>
+        </h3>
+
+        <form id="form-accept">
+            <input type="hidden" name="form-id" id="form-id" value="<%= data[0][Object.keys(data[0])[0]] %>">
+            <input type="hidden" name="form-name" id="form-name" value="<%= data[0][Object.keys(data[0])[1]] %>">
+            <button type="submit">Aceptar</button>
+        </form>
+    </div>
+
     <script>
         document.getElementById('form-accept').addEventListener('submit', async (e) => {
-        e.preventDefault()
-        const id = document.getElementById('form-id').value
-        const NOM_SOL = document.getElementById('form-name').value
-        const EST_SOL = true
-        const db = JSON.stringify({ id, NOM_SOL, EST_SOL })
-        console.log(db)
-        try {
-            const response = await fetch('/form', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id, NOM_SOL, EST_SOL })
+            e.preventDefault()
+            const id = document.getElementById('form-id').value
+            const NOM_SOL = document.getElementById('form-name').value
+            const EST_SOL = true
+            const db = JSON.stringify({ id, NOM_SOL, EST_SOL })
+            console.log(db)
+            try {
+                const response = await fetch('/form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id, NOM_SOL, EST_SOL })
                 })
-            const result = await response.json()
-            console.log(result)
-            window.alert('EXITO')
-            location.reload()
-        } catch (error) {
-            console.error('Error al enviar la solicitud:', error);
-            window.alert('Error al enviar los datos');
-        }
-    })
+                const result = await response.json()
+                console.log(result)
+                window.alert('EXITO')
+                location.reload()
+            } catch (error) {
+                console.error('Error al enviar la solicitud:', error);
+                window.alert('Error al enviar los datos');
+            }
+        })
     </script>
 </body>
+
 </html>
