@@ -27,6 +27,44 @@
         <form id="form-accept">
             <input type="hidden" name="form-id" id="form-id" value="<%= data[0] %>">
             <input type="hidden" name="form-name" id="form-name" value="<%= data[1] %>">
+            <fieldset>
+                <legend>Autorización</legend>
+
+                <div>
+                    <label for="form-date">Fecha:</label>
+                    <input type="date" id="form-date" name="form-date">
+                </div>
+
+                <div>
+                    <label for="form-reviewer">Revisor:</label>
+                    <input type="text" id="form-reviewer" name="form-reviewer"
+                        placeholder="Participante revisor">
+                </div>
+
+                <div>
+                    <label for="form-enviroment">Entorno:</label>
+                    <input type="text" id="form-enviroment" name="form-enviroment"
+                        placeholder="Pruebas, desarrollo, ...">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Módulos</legend>
+
+                <div>
+                    <label for="form-modules">Modificados</label>
+                    <input type="text" id="form-modules" name="form-modules"
+                        placeholder="Modulos modificaods...">
+                </div>
+
+                <div>
+                    <label for="form-affected">Afectados</label>
+                    <input type="text" id="form-affected" name="form-affected"
+                        placeholder="Modulos directamente afectados/acoplados">
+                </div>
+
+            </fieldset>
+
             <button type="submit">Aceptar</button>
         </form>
         <br>
