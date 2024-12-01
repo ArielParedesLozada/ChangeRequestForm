@@ -71,7 +71,7 @@
                     <label for="form-affected">Afectados</label>
                     <input type="text" id="form-affected" name="form-affected"
                         placeholder="Modulos directamente afectados/acoplados"
-                        value="<%= data || '' %>" <%=data[14] == null ? '' : 'disabled' %>>
+                        value="<%= data[14] || '' %>" <%=data[14] == null ? '' : 'disabled' %>>
                 </div>
 
             </fieldset>
@@ -82,6 +82,7 @@
         <form id="form-delete">
             <button type="submit">BORRAR</button>
         </form>
+        <a href="/forms">Volver</a>
     </div>
     <script src="../js/form.js"></script>
 </body>
