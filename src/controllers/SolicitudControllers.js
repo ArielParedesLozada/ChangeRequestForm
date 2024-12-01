@@ -2,7 +2,23 @@ const db = require('../DB/mysql')
 
 const TABLE = 'solicitudes'
 const KEY = 'ID_SOL'
-const STRUCTURE = ['ID_SOL','NOM_SOL', 'EST_SOL']
+const STRUCTURE = [
+    'ID_SOL',
+    'TIT_SOL',
+    'VER_SOL',
+    'FEC_SOL',
+    'PRIO_SOL',
+    'EST_SOL',
+    'DES_SOL',
+    'JUST_SOL',
+    'ID_PER_SOLICITA',
+    'ID_PRO_SOL',
+    'FEC_REV_SOL',
+    'ID_PER_REVISA',
+    'ENT_SOL',
+    'MOD_MOD_SOL',
+    'MOD_AFE_SOL'
+]
 
 function parse(data) {
     if (!Array.isArray(data) || data.length != STRUCTURE.length) {
