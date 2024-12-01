@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todos los formularios</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="../css/app.css">
 </head>
 
 <body>
@@ -40,8 +40,8 @@
                             <legend>Solicitud</legend>
 
                             <div>
-                                <label for="form-name">Titulo de la solicitud</label>
-                                <input type="text" id="form-name" name="form-name" placeholder="Breve descripción">
+                                <label for="form-title">Titulo de la solicitud</label>
+                                <input type="text" id="form-title" name="form-title" placeholder="Breve descripción">
                             </div>
 
                             <div class="grid-code">
@@ -124,32 +124,7 @@
                     </form>
                 </div>
             </div>
-
-            <script>
-                document.getElementById('new-form').addEventListener('submit', async (e) => {
-                    e.preventDefault()
-                    const data = [
-                        0,
-                        document.getElementById('form-name').value,
-                        null
-                    ]
-                    try {
-                        const response = await fetch('/form', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        })
-                        const result = await response.json()
-                        window.alert(result.error ? 'ERROR' : 'EXITO')
-                        location.reload()
-                    } catch (error) {
-                        console.error('Error al enviar la solicitud:', error);
-                        window.alert('Error al enviar los datos');
-                    }
-                })
-            </script>
+            <script src="../js/all.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ const selectAll = async function selectAll(req, res, next) {
     const rawData = await solicitudCon.selectAll();
     const data = rawData.map((row) => Object.values(row));
     //responses.success(req, res, data)
-    res.render("all", { data });
+    res.render("pages/all", { data });
   } catch (error) {
     next(error);
   }
@@ -18,7 +18,7 @@ const select = async function select(req, res, next) {
     let data = rawData.map((row) => Object.values(row));
     data = data[0];
     //responses.success(req, res, data)
-    res.render("form", { data });
+    res.render("pages/form", { data });
   } catch (error) {
     next(error);
   }
