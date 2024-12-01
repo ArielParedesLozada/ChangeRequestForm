@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <% all.forEach(form=> { %>
-        <li><a href="/forms/<%= form.ID_SOL %>">
-                <%= form.NOM_SOL %>
+    <% data.forEach(form => { %>
+        <li><a href="/forms/<%= form[0] %>">
+                <%= form[1] %>.
             </a></li>
         <% }) %>
 
