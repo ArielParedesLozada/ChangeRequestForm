@@ -2,8 +2,20 @@ document.getElementById('new-form').addEventListener('submit', async (e) => {
     e.preventDefault()
     const data = [
         0,
-        document.getElementById('form-name').value,
-        null
+        document.getElementById('form-title').value,
+        document.getElementById('form-version').value,
+        document.getElementById('form-date-sol').value,
+        document.getElementById('form-priority').value,
+        null,
+        document.getElementById('form-description').value,
+        document.getElementById('form-reason').value,
+        document.getElementById('form-solicitante').value,
+        document.getElementById('form-project').value,
+        null,
+        null,
+        null,
+        null,
+        null,
     ]
     try {
         const response = await fetch('/form', {
