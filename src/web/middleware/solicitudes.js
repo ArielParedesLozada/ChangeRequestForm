@@ -16,7 +16,8 @@ const selectAll = async function selectAll(req, res, next) {
 const select = async function select(req, res, next) {
     try {
         const rawData = await solicitudCon.select(req.params.id)
-        const data = rawData.map(row => Object.values(row))
+        let data = rawData.map(row => Object.values(row))
+        data = data[0]
         //responses.success(req, res, data)
         res.render('form', { data })
     } catch (error) {
