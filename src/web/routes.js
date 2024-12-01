@@ -3,7 +3,7 @@ const solicitudes = require("./middleware/solicitudes");
 const api = express.Router();
 
 api.get("/", (req, res) => {
-  res.render("index");
+  res.render("pages/index");
 });
 
 api.get("/forms", solicitudes.selectAll);

@@ -25,7 +25,8 @@ function select(id) {
 }
 
 function eliminate(body) {
-    return db.eliminate(TABLE, KEY, body)
+    const nBody = parse(body)
+    return db.eliminate(TABLE, KEY, nBody)
 }
 
 function agregate(body) {

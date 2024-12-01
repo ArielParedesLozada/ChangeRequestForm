@@ -52,7 +52,7 @@ function selectAll(table) {
 function eliminate(table, key, data) {
     let query = `DELETE FROM ${table} WHERE ${key} = ?`
     return new Promise((resolve, reject) => {
-        conexion.query(query, data.id, (error, result) => {
+        conexion.query(query, data[key], (error, result) => {
             return error ? reject(error) : resolve(result)
         })
     })
