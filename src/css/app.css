@@ -158,11 +158,6 @@ textarea {
     gap: 0 1rem;
   }
 
-  .grid-version {
-    grid-column: 2 / -1;
-    grid-row: 1 / 2;
-  }
-
   .grid-priority {
     grid-column: 1 / -1;
   }
