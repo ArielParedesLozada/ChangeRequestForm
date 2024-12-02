@@ -29,8 +29,9 @@
 
                             <div>
                                 <label for="form-solicitante">Nombre completo:</label>
-                                <input type="text" id="form-solicitante" name="form-solicitante" placeholder="Tu nombre completo"
-                                    required>
+                                <select name="form-solicitante" id="form-solicitante">
+                                    <option value="" disabled selected>Seleccione un personal</option>
+                                </select>
                             </div>
 
                         </fieldset>
@@ -46,12 +47,13 @@
 
                             <div class="grid-code">
                                 <label for="form-project">Proyecto perteneciente</label>
-                                <input type="text" id="form-project" name="form-project" placeholder="Codigo de la solicitud">
+                                <select name="form-project" id="form-project">
+                                    <option value="" disabled selected>Seleccione un proyecto</option>
+                                </select>                            
                             </div>
-
                             <div class="grid-version">
                                 <label for="form-version">Version:</label>
-                                <input type="text" id="form-version" name="form-version" placeholder="Breve descripción"
+                                <input type="text" id="form-version" name="form-version" placeholder="Versionamiento"
                                     required>
                             </div>
 
