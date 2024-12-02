@@ -6,7 +6,7 @@ document.getElementById('new-form').addEventListener('submit', async (e) => {
         0,
         document.getElementById('form-title').value,
         document.getElementById('form-version').value,
-        document.getElementById('form-date-sol').value,
+        new Date(document.getElementById('form-date-sol').value).toISOString().split('T')[0],
         document.getElementById('form-priority').value,
         null,
         document.getElementById('form-description').value,

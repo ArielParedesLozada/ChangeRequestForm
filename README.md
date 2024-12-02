@@ -11,5 +11,10 @@ npm install
 **Para que corra el servidor**
 <br>
 npm run dev
+<br>
+
+**Para hacer las migraciones**
+<br>
+npm run migrate
 
 ## Preguntas
