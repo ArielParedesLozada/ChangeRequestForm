@@ -16,8 +16,8 @@
     <div class="container">
 
         <h3>
-            ESTADO:
-            <% if ( data[5] == null) { %>
+            Estado:
+            <% if ( data[5]==null) { %>
                 Por aprobar
                 <% } else { %>
                     Aprobado
@@ -41,21 +41,23 @@
                     <label for="form-date">Fecha:</label>
                     <input type="date" id="form-date" name="form-date"
                         value="<%= data[10] == null ? '' : new Date(data[10]).toISOString().split('T')[0] %>"
-                        <%=data[10] == null ? '' : 'disabled' %>>
+                        <%=data[10]==null ? '' : 'disabled' %>>
                 </div>
 
                 <div>
                     <label for="form-reviewer">Revisor:</label>
-                    <select name="form-reviewer" id="form-reviewer" <%= data[11] == null ? '' : 'disabled' %>>
-                        <option value="<%= data[11] || '' %>" disabled selected><%= data[11] || 'Seleccione al revisor' %></option>
+                    <select name="form-reviewer" id="form-reviewer" <%=data[11]==null ? '' : 'disabled' %>>
+                        <option value="<%= data[11] || '' %>" disabled selected>
+                            <%= data[11] || 'Seleccione al revisor' %>
+                        </option>
                     </select>
                 </div>
 
                 <div>
                     <label for="form-enviroment">Entorno:</label>
                     <input type="text" id="form-enviroment" name="form-enviroment"
-                        placeholder="Pruebas, desarrollo, ..." value="<%= data[12] || '' %>"
-                        <%=data[12] == null ? '' : 'disabled' %>>
+                        placeholder="Pruebas, desarrollo, ..." value="<%= data[12] || '' %>" <%=data[12]==null ? ''
+                        : 'disabled' %>>
                 </div>
             </fieldset>
 
@@ -71,8 +73,8 @@
                 <div>
                     <label for="form-affected">Afectados</label>
                     <input type="text" id="form-affected" name="form-affected"
-                        placeholder="Modulos directamente afectados/acoplados"
-                        value="<%= data[14] || '' %>" <%=data[14] == null ? '' : 'disabled' %>>
+                        placeholder="Modulos directamente afectados/acoplados" value="<%= data[14] || '' %>"
+                        <%=data[14]==null ? '' : 'disabled' %>>
                 </div>
 
             </fieldset>
@@ -81,7 +83,7 @@
         </form>
         <br>
         <form id="form-delete">
-            <button type="submit">BORRAR</button>
+            <button type="submit">Borrar</button>
         </form>
         <a href="/forms">Volver</a>
     </div>
