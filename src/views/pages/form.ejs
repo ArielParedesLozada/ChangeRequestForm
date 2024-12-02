@@ -41,13 +41,14 @@
                     <label for="form-date">Fecha:</label>
                     <input type="date" id="form-date" name="form-date"
                         value="<%= data[10] == null ? '' : new Date(data[10]).toISOString().split('T')[0] %>"
-                        <%=data[10]==null ? '' : 'disabled' %>>
+                        <%=data[10] == null ? '' : 'disabled' %>>
                 </div>
 
                 <div>
                     <label for="form-reviewer">Revisor:</label>
-                    <input type="text" id="form-reviewer" name="form-reviewer" placeholder="Participante revisor"
-                        value="<%= data[11] || '' %>" <%=data[11]==null ? '' : 'disabled' %> >
+                    <select name="form-reviewer" id="form-reviewer" <%= data[11] == null ? '' : 'disabled' %>>
+                        <option value="<%= data[11] || '' %>" disabled selected><%= data[11] || 'Seleccione al revisor' %></option>
+                    </select>
                 </div>
 
                 <div>
@@ -63,7 +64,7 @@
 
                 <div>
                     <label for="form-modules">Modificados</label>
-                    <input type="text" id="form-modules" name="form-modules" placeholder="Modulos modificaods..."
+                    <input type="text" id="form-modules" name="form-modules" placeholder="Modulos modificados..."
                         value="<%= data[13] || '' %>" <%=data[13]==null ? '' : 'disabled' %>>
                 </div>
 
