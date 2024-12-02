@@ -70,3 +70,16 @@ document.getElementById('form-delete').addEventListener('submit', async (e) => {
         window.alert('Error al enviar los datos');
     }
 })
+
+fetch('/personal')
+.then(response => response.json())
+.then(data => {
+    const select = document.getElementById('form-reviewer') 
+    let selectText = select.innerHTML
+    for (let i = 0; i < data.body.length; i++) {
+        selectText += `
+            <option value="${data.body[i][0]}">${data.body[i][1]} ${data.body[i][2]}</option>
+        `
+    }
+    select.innerHTML = selectText
+})
