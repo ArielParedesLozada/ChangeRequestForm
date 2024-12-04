@@ -19,9 +19,11 @@
             Estado:
             <% if ( data[5]==null) { %>
                 Por aprobar
-                <% } else { %>
-                    Aprobado
-                    <% } %>
+                <% } else if (data[5]==0){ %>
+                    Desaprobado
+                    <% } else {%>
+                        Aprobado
+                        <% } %>
         </h3>
         <input type="hidden" name="form-id" id="form-id" value="<%= data[0] %>">
         <input type="hidden" name="form-title" id="form-title" value="<%= data[1] %>">
@@ -79,11 +81,15 @@
 
             </fieldset>
 
-            <button type="submit">Aceptar</button>
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Aceptar</button>
+        </form>
+        <br>
+        <form id="form-reject">
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Rechazar</button>
         </form>
         <br>
         <form id="form-delete">
-            <button type="submit">Borrar</button>
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Borrar</button>
         </form>
         <a href="/forms">Volver</a>
     </div>
