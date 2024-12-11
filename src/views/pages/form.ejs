@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <h1>
+        <%= data[1] %>
+    </h1>
+
+    <div class="container">
+
+        <h3>
+            Estado:
+            <% if ( data[5]==null) { %>
+                Por aprobar
+                <% } else if (data[5]==0){ %>
+                    Desaprobado
+                    <% } else {%>
+                        Aprobado
+                        <% } %>
+        </h3>
+        <form id="form-accept">
+            <div>
+                <input type="text" disabled name="form-id" id="form-id" value="<%= data[0] %>">
+                <input type="text" disabled name="form-title" id="form-title" value="<%= data[1] %>">
+                <input type="text" disabled name="form-version" id="form-version" value="<%= data[2] %>">
+                <input type="text" disabled name="form-date-sol" id="form-date-sol" value="<%= data[3] %>">
+                <input type="text" disabled name="form-priority" id="form-priority" value="<%= data[4] %>">
+                <input type="text" disabled name="form-status" id="form-status" value="<%= data[5] %>">
+                <input type="text" disabled name="form-description" id="form-description" value="<%= data[6] %>">
+                <input type="text" disabled name="form-reason" id="form-reason" value="<%= data[7] %>">
+                <input type="text" disabled name="form-solicitante" id="form-solicitante" value="<%= data[8] %>">
+                <input type="text" disabled name="form-project" id="form-project" value="<%= data[9] %>">
+            </div>
+            <fieldset>
+                <legend>Autorización</legend>
+
+                <!--
+                <div>
+                    <label for="form-date">Fecha:</label>
+                    <input type="date" id="form-date" name="form-date"
+                        value="<%= data[10] == null ? '' : new Date(data[10]).toISOString().split('T')[0] %>"
+                        <%=data[10]==null ? '' : 'disabled' %>>
+                </div>
+            -->
+                <div>
+                    <label for="form-reviewer">Revisor:</label>
+                    <select name="form-reviewer" id="form-reviewer" <%=data[11]==null ? '' : 'disabled' %>>
+                        <option value="<%= data[11] || '' %>" disabled selected>
+                            <%= data[11] || 'Seleccione al revisor' %>
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="form-enviroment">Entorno:</label>
+                    <input type="text" id="form-enviroment" name="form-enviroment"
+                        placeholder="Pruebas, desarrollo, ..." value="<%= data[12] || '' %>" <%=data[12]==null ? ''
+                        : 'disabled' %>>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Módulos</legend>
+
+                <div>
+                    <label for="form-modules">Modificados</label>
+                    <input type="text" id="form-modules" name="form-modules" placeholder="Modulos modificados..."
+                        value="<%= data[13] || '' %>" <%=data[13]==null ? '' : 'disabled' %>>
+                </div>
+
+                <div>
+                    <label for="form-affected">Afectados</label>
+                    <input type="text" id="form-affected" name="form-affected"
+                        placeholder="Modulos directamente afectados/acoplados" value="<%= data[14] || '' %>"
+                        <%=data[14]==null ? '' : 'disabled' %>>
+                </div>
+                <div class="grid-priority">
+                    <label for="form-type">Tipo de cambio</label>
+                    <select id="form-type" name="form-type" required>
+                        <option value="" disabled selected>Tipo de cambio...</option>
+                        <option value="alta">Estándar</option>
+                        <option value="media">Normal</option>
+                        <option value="baja">De emergencia</option>
+                    </select>
+                </div>
+
+            </fieldset>
+
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Aceptar</button>
+        </form>
+        <br>
+        <form id="form-reject">
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Rechazar</button>
+        </form>
+        <br>
+        <form id="form-delete">
+            <button type="submit" <%=(data[5] !== null) ? 'disabled' : '' %>>Borrar</button>
+        </form>
+        <a href="/forms">Volver</a>
+    </div>
+    <script src="../js/form.js"></script>
+</body>
+
+</html>

@@ -1,11 +1,11 @@
 const db = require('../DB/mysql')
 
-const TABLE = 'proyectos'
-const KEY = 'ID_PRO'
+const TABLE = 'personal'
+const KEY = 'ID_PER'
 const STRUCTURE = [
-    'ID_PRO',
-    'NOM_PRO',
-    'DES_PRO'
+    'ID_PER',
+    'NOM_PER',
+    'APE_PER'
 ]
 
 function parse(data) {

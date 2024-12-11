@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los formularios</title>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <% if (data && data.length> 0) { %>
+        <div class="all-forms">
+            <% data.forEach(form=> { %>
+                <li><a href="/forms/<%= form[0] %>">
+                        <%= form[1] %>
+                    </a></li>
+                <% }) %>
+        </div>
+        <% } %>
+
+            <div>
+                <div class="container">
+                    <h1>Formulario de Petición de Cambios</h1>
+                    <form id="new-form">
+                        <!-- Información del solicitante -->
+                        <fieldset class="applicant">
+                            <legend>Información del Solicitante</legend>
+
+                            <div>
+                                <label for="form-solicitante">Nombre completo:</label>
+                                <select name="form-solicitante" id="form-solicitante">
+                                    <option value="" disabled selected>Seleccione un personal</option>
+                                </select>
+                            </div>
+
+                        </fieldset>
+
+                        <!-- Detalles del cambio -->
+                        <fieldset class="details">
+                            <legend>Solicitud</legend>
+
+                            <div>
+                                <label for="form-title">Titulo de la solicitud</label>
+                                <input type="text" id="form-title" name="form-title" placeholder="Breve descripción">
+                            </div>
+
+                            <div class="grid-code">
+                                <label for="form-project">Proyecto perteneciente</label>
+                                <select name="form-project" id="form-project">
+                                    <option value="" disabled selected>Seleccione un proyecto</option>
+                                </select>                            
+                            </div>
+                            <div class="grid-version">
+                                <label for="form-version">Version:</label>
+                                <input type="text" id="form-version" name="form-version" placeholder="Versionamiento"
+                                    required>
+                            </div>
+
+                            <!---
+                            <div>
+                                <label for="form-date-sol">Fecha:</label>
+                                <input type="date" id="form-date-sol" name="form-date-sol">
+                            </div>
+                        -->
+
+                            <div>
+                                <label for="form-description">Descripción detallada:</label>
+                                <textarea id="form-description" name="form-description"
+                                    placeholder="Describe el cambio en detalle..." required></textarea>
+                            </div>
+
+                            <div>
+                                <label for="form-reason">Razón o justificación:</label>
+                                <textarea id="form-reason" name="form-reason"
+                                    placeholder="¿Por qué es necesario este cambio?" required></textarea>
+                            </div>
+
+                            <div class="grid-priority">
+                                <label for="form-priority">Nivel de prioridad:</label>
+                                <select id="form-priority" name="form-priority" required>
+                                    <option value="" disabled selected>Selecciona...</option>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+            <script src="../js/all.js"></script>
+</body>
+
+</html>
